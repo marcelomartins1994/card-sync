@@ -24,13 +24,12 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    t.render( function(){
-                        var name = t.getAll()
-                        console.log(name)
-                        return name;
-                    }
-                    )
-                    }
+                    
+                    document.getElementsByClassName("card-detail-window u-clearfix")[0].
+                    getElementsByClassName("window-title")[0].
+                    getElementsByClassName("card-detail-title-assist js-title-helper")[0].textContent = "É AGORA, SENHORES!"
+                    
+                }
             },
             {
                 icon: CARD_SYNC_ICON,
