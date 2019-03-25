@@ -24,7 +24,7 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    return t.set('name','TESTANDO, PORRA!');
+                    return t.set('board','shared','name','TESTANDO, PORRA!');
                 }
             },
             {
