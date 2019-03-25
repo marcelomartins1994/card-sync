@@ -22,8 +22,10 @@ TrelloPowerUp.initialize({
         return [
             {
                 icon: SEND_TO_SPRINT_ICON,
-                text: "Send To Sprint"//,
-                //callback: sendToSprint(t)
+                text: "Send To Sprint",
+                callback: function(t) {
+                    return t.set('name','OLHA O TESTE AÍ, GAROTADA');
+                }
             },
             {
                 icon: CARD_SYNC_ICON,
