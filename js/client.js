@@ -25,9 +25,7 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    document.getElementsByClassName("card-detail-window u-clearfix")[0].
-                    getElementsByClassName("window-title")[0].
-                    getElementsByClassName("card-detail-title-assist js-title-helper")[0].textContent = "É AGORA, SENHORES!"
+                    document.getElementsByClassName("card-detail-window u-clearfix")[0].getElementsByClassName("window-title")[0].getElementsByClassName("card-detail-title-assist js-title-helper")[0].textContent = "É AGORA, SENHORES!"
                     
                 }
             },
