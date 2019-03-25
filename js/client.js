@@ -1,6 +1,6 @@
 var Promise = TrelloPowerUp.Promise;
 
-var SEND_TO_SPRINT_ICON = "./images/send_to_sprint.svg" // INCLUDE PATH TO FILE HERE
+var SEND_TO_SPRINT_ICON = "./images/send_to_sprint_icon.svg" // INCLUDE PATH TO FILE HERE
 var CARD_SYNC_ICON = "./images/sync_icon.svg" //INCLUDE PATH TO FILE HERE
 
 
