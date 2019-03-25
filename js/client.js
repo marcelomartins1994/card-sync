@@ -25,10 +25,9 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     t.render( function(){
-                        var bla = t.remove('card', 'shared', 'name')
-                        var name = t.get('card','shared','name')
+                        var name = t.getAll()
                         console.log(name)
-                        return t.remove('board','shared','name');
+                        return name;
                     }
                     )
                     }
