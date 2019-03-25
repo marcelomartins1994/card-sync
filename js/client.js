@@ -24,10 +24,13 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    var name = t.get('name')
-                    console.log(name)
-                    return t.set('board','shared','name','TESTANDO, PORRA!');
-                }
+                    t.render( function(){
+                        var name = t.get('name')
+                        console.log(name)
+                        return t.set('board','shared','name','TESTANDO, PORRA!');
+                    }
+                    )
+                    }
             },
             {
                 icon: CARD_SYNC_ICON,
