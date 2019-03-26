@@ -54,7 +54,7 @@ TrelloPowerUp.initialize({
                     xhr.open("PUT", CARD_EDIT_URL + cardID + "?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                     xhr.send(data)
                     */
-                    return t.set('card','shared','name','SERÁ?')
+                    return t.attach({name: 'TESTANDO', url: 'https://www.liberedu.com'})
                 }
             },
             {
