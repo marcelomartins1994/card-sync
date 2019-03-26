@@ -29,7 +29,7 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var cardID = t.card('id');//.get('id')
+                    var cardID = t.card('id').get('id')['_settledValue']
                     console.log(cardID)
                     /*
                     var data = null
