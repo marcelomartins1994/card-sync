@@ -30,7 +30,9 @@ TrelloPowerUp.initialize({
                 callback: function(t) {
                     
                     var teste = t.getContext().card;
-                    var cardID = t.card('all')
+                    var cardID = t.card('all').then((card) => {
+                        console.log(card);
+                    })
                     console.log(cardID, JSON.stringify(cardID), teste)
                     /*
                     var data = null
