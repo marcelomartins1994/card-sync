@@ -29,8 +29,8 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var name = t.card('id')
-                    console.log(name)
+                    var cardID = t.card('id').get('id')
+                    console.log(cardID)
                     /*
                     var data = null
                     var xhr = new XMLHttpRequest()
@@ -43,11 +43,11 @@ TrelloPowerUp.initialize({
                             }
                         }
                     )
+                    
+                    xhr.open("PUT", CARD_EDIT_URL + cardID + "?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
+                    xhr.send(data)
                     */
-                    //xhr.open("PUT", CARD_EDIT_URL + cardID + "?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
-                    //xhr.send(data)
-
-                    return name
+                    return cardID
                 }
             },
             {
