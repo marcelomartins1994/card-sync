@@ -24,8 +24,10 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    var name =  'BOOOOORA! VAI SUBIR EM ÁRVORE É O CARALHO!'
-                    t.card('name') = name
+                    //var name =  'BOOOOORA! VAI SUBIR EM ÁRVORE É O CARALHO!'
+                    //t.card('name') = name
+                    var name = t.card('name')
+                    
                     console.log(name)
                     return name
                 }
