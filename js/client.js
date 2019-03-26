@@ -30,7 +30,7 @@ TrelloPowerUp.initialize({
                 callback: function(t) {
                     
                     var cardID = t.card('id').get('id')
-                    console.log(Object.keys(cardID))
+                    console.log(cardID._settledValue)
                     /*
                     var data = null
                     var xhr = new XMLHttpRequest()
