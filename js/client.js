@@ -29,8 +29,8 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var cardID = t.card('all').then((card) => {
-                        card.id
+                    var cardTest = t.card('all').then((card) => {
+                        var cardID = card.id
                     })
                     console.log(cardID)
                     //t.set(cardID,'shared','name','SERÁ?')
