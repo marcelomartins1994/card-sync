@@ -31,8 +31,10 @@ TrelloPowerUp.initialize({
                     
                     var cardTest = t.card('all').then((card) => {
                         var cardID = card.id
+                        console.log(cardID)
+                        t.set(cardID,'shared','name','SERÁ?')
                     })
-                    console.log(cardID)
+                    
                     //t.set(cardID,'shared','name','SERÁ?')
 
                     // console.log(cardID, JSON.stringify(cardID), teste)
