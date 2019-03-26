@@ -24,10 +24,10 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    
-                    var title = document.getElementsByClassName("card-detail-title-assist js-title-helper")[0].textContent
-    
-                    return true
+                    var name =  'BOOOOORA! VAI SUBIR EM ÁRVORE É O CARALHO!'
+                    t.card('name') = name
+                    console.log(name)
+                    return name
                 }
             },
             {
