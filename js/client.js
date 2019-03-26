@@ -52,7 +52,7 @@ TrelloPowerUp.initialize({
                     xhr.open("PUT", CARD_EDIT_URL + cardID + "?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                     xhr.send(data)
                     */
-                    return cardID
+                    return cardTest
                 }
             },
             {
