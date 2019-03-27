@@ -60,7 +60,8 @@ TrelloPowerUp.initialize({
                         var cardPromise = t.card('all').then( (card) => {
                             
                             var name = card.name
-
+                            var data = null
+                            var xhr = new XMLHttpRequest()
                             xhr.addEventListener(
                                 "readystatechange", function() {
     
@@ -70,6 +71,7 @@ TrelloPowerUp.initialize({
                                 }
                             )
                             xhrRequest.open("POST", CARD_EDIT_URL + "/?idBoard=" + sprintID + "&name=" + name + "&key=" + API_KEY + "&token=" + TOKEN)
+                            xhr.send(data)
                             /*var cardURL = card.url
                             t.attach({
                                 url: cardURL
