@@ -6,13 +6,35 @@ var CARD_SYNC_ICON = "./images/sync_icon.svg"
 const API_KEY = "719193026361d54cf72ec2b372744cb4"
 const TOKEN = "27a6f844cf95d64099ab9ed5e05dc7dc925d3af22daa8537014fe31be064d44d"
 
-const CARD_EDIT_URL = "https://api.trello.com/1/cards/"
+const CARD_EDIT_URL = "https://api.trello.com/1/cards"
 
-//function sendToSprint(t) {
+function sendToSprint(t) {
 
-  //  t.set('name',"OLHA O TESTE AÍ, GAROTADA")
 
-//}
+
+}
+
+
+function copyCardToList(cardToCopyID,listID/*,boardID*/) {
+
+    var payload = {
+        due: "",
+        idList: listID,
+        idCardSource: cardToCopyID,
+        keepFromSource: "all"
+    }
+
+    var url = CARD_EDIT_URL + "?key=" + API_KEY + "&token=" + TOKEN
+    var options = {
+        method: "post",
+        payload: payload
+    }
+
+    UrlFetchApp.fetch(url,options)
+
+}
+
+
 
 
 
@@ -28,7 +50,7 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    
+                    /*
                     var cardPromise = t.card('all').then((card) => {
                         var cardID = card.id 
                     
@@ -45,10 +67,22 @@ TrelloPowerUp.initialize({
                             }
                         )
                         
-                        xhr.open("PUT", CARD_EDIT_URL + cardID + "/?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
+                        xhr.open("PUT", CARD_EDIT_URL + "/" + cardID + "/?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                         xhr.send(data)
                         
                     })
+                    */
+
+                    var listPromise = t.card('all').then( (card) => {
+
+                        var listID = card.idList
+                        var cardID = card.id
+                        
+                        copyCardToList(cardID,listID)
+
+
+                    }
+                    )
 
                     return null
                 }
