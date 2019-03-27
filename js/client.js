@@ -16,6 +16,11 @@ function sendToSprint(t) {
 }
 
 
+function postCard(xhrRequest,card,boardID) {
+
+    xhrRequest.open("POST", CARD_EDIT_URL + "/?idBoard=" + boardID + "&key=" + API_KEY + "&token=" + TOKEN)
+
+}
 
 
 
@@ -41,8 +46,15 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var Teste = t.get('board','shared','sprintID').then( (sprintID) => {
-                        console.log(sprintID)
+                    var sprintPromise = t.get('board','shared','sprintID').then( (sprintID) => {
+                        var cardPromise = t.card('all').then( (card) => {
+                            var cardURL = card.url
+                            t.attach({
+                                url: cardURL
+                            })
+
+                        }
+                        )
                     }
                     )
                     
