@@ -21,7 +21,7 @@ function sendToSprint(t) {
 
 function postBoard(xhrRequest,boardName) {
 
-    xhrRequest.open("POST", BOARD_EDIT_URL + + "/?name=" + boardName + "&key=" + API_KEY + "&token=" + TOKEN)
+    xhrRequest.open("POST", BOARD_EDIT_URL + "/?name=" + boardName + "&key=" + API_KEY + "&token=" + TOKEN)
 
 }
 
