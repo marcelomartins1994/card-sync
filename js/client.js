@@ -16,9 +16,10 @@ function sendToSprint(t) {
 }
 
 
-function postCard(xhrRequest,card,boardID) {
+function postCard(xhrRequest,card) {
 
-    xhrRequest.open("POST", CARD_EDIT_URL + "/?idBoard=" + boardID + "&key=" + API_KEY + "&token=" + TOKEN)
+    var cardinfo = "ble"
+    xhrRequest.open("POST", CARD_EDIT_URL + "/?" + cardinfo + "&key=" + API_KEY + "&token=" + TOKEN)
 
 }
 
@@ -30,7 +31,16 @@ function postBoard(xhrRequest,organizationID,boardName) {
 
 }
 
+function copyCardToBoard(xhrRequest,card,boardID) {
 
+    var newCard = card
+    newCard.idBoard = boardID
+
+    postCard(xhrRequest,newCard)
+
+
+
+}
 
 
 
@@ -48,10 +58,22 @@ TrelloPowerUp.initialize({
                     
                     var sprintPromise = t.get('board','shared','sprintID').then( (sprintID) => {
                         var cardPromise = t.card('all').then( (card) => {
-                            var cardURL = card.url
+                            
+                            var name = card.name
+
+                            xhr.addEventListener(
+                                "readystatechange", function() {
+    
+                                    if (this.readyState === this.DONE) {
+                                        console.log(this.responseText)
+                                    }
+                                }
+                            )
+                            xhrRequest.open("POST", CARD_EDIT_URL + "/?idBoard=" + sprintID + "&name=" + name + "&key=" + API_KEY + "&token=" + TOKEN)
+                            /*var cardURL = card.url
                             t.attach({
                                 url: cardURL
-                            })
+                            })*/
 
                         }
                         )
