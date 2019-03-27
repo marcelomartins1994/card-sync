@@ -72,17 +72,29 @@ TrelloPowerUp.initialize({
                         
                     })
                     */
-
+                    
                     var listPromise = t.card('all').then( (card) => {
 
                         var listID = card.idList
-                        var cardID = card.id
                         
-                        copyCardToList(cardID,listID)
+                        var newCard = {
+                            name: 'New Test Card', 
+                            desc: 'This is the description of our new card.',
+                            // Place this card at the top of our list 
+                            idList: listID,
+                            pos: 'top'
+                          };
+                          
+                        window.Trello.post('/cards/', newCard, creationSuccess);
+                    
 
 
                     }
                     )
+                    
+
+                    
+
 
                     return null
                 }
