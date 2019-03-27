@@ -41,50 +41,10 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var cardPromise = t.card('all').then((card) => {
-                        var cardID = card.id
-                        var idList = card.idList
-                    
-                        var newName = "AGORA VAI, PORRA! (2)"
-                        var data = null
-                        var xhr = new XMLHttpRequest()
-
-                        xhr.addEventListener(
-                            "readystatechange", function() {
-
-                                if (this.readyState === this.DONE) {
-                                    console.log(this.responseText)
-                                }
-                            }
-                        )
-                        
-
-                        /* xhr.open("POST", CARD_EDIT_URL + "/" + cardID + "/?idList=" + idList + "&name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)*/
-                        xhr.send(data)
-                        
-                    })
-                    
-                    /*
-                    var listPromise = t.card('all').then( (card) => {
-
-                        var listID = card.idList
-                        
-                        var newCard = {
-                            name: 'New Test Card', 
-                            desc: 'This is the description of our new card.',
-                            // Place this card at the top of our list 
-                            idList: listID,
-                            pos: 'top'
-                          };
-                          
-                        window.Trello.post('/cards/', newCard, creationSuccess);
-                    
-
-
+                    var Teste = t.get('board','shared','sprintID').then( (sprintID) => {
+                        console.log(sprintID)
                     }
                     )
-                    */
-
                     
                     return null
                 }
@@ -122,7 +82,7 @@ TrelloPowerUp.initialize({
                                 }
                             }
                         )
-                        
+                        t.set('board', 'shared', 'sprintID', organizationID)
                         postBoard(xhr,organizationID,"Sprint")
                         xhr.send(data)
 
