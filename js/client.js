@@ -70,7 +70,7 @@ TrelloPowerUp.initialize({
                                     }
                                 }
                             )
-                            xhrRequest.open("POST", CARD_EDIT_URL + "/?idBoard=" + sprintID + "&name=" + name + "&key=" + API_KEY + "&token=" + TOKEN)
+                            xhr.open("POST", CARD_EDIT_URL + "/?idBoard=" + sprintID + "&name=" + name + "&key=" + API_KEY + "&token=" + TOKEN)
                             xhr.send(data)
                             /*var cardURL = card.url
                             t.attach({
