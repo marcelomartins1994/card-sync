@@ -7,6 +7,7 @@ const API_KEY = "719193026361d54cf72ec2b372744cb4"
 const TOKEN = "27a6f844cf95d64099ab9ed5e05dc7dc925d3af22daa8537014fe31be064d44d"
 
 const CARD_EDIT_URL = "https://api.trello.com/1/cards"
+const BOARD_EDIT_URL = "https://api.trello.com/1/boards"
 
 function sendToSprint(t) {
 
@@ -15,25 +16,14 @@ function sendToSprint(t) {
 }
 
 
-function copyCardToList(cardToCopyID,listID/*,boardID*/) {
 
-    var payload = {
-        due: "",
-        idList: listID,
-        idCardSource: cardToCopyID,
-        keepFromSource: "all"
-    }
 
-    var url = CARD_EDIT_URL + "?key=" + API_KEY + "&token=" + TOKEN
-    var options = {
-        method: "post",
-        payload: payload
-    }
 
-    UrlFetchApp.fetch(url,options)
+function postBoard(xhrRequest,boardName) {
+
+    xhrRequest.open("POST", BOARD_EDIT_URL + + "/?name=" + boardName + "&key=" + API_KEY + "&token=" + TOKEN)
 
 }
-
 
 
 
@@ -68,7 +58,9 @@ TrelloPowerUp.initialize({
                             }
                         )
                         
-                        xhr.open("POST", CARD_EDIT_URL /*+ "/" + cardID*/ + "/?idList=" + idList + "&name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
+                        postBoard(xhr,newName)
+
+                        /* xhr.open("POST", CARD_EDIT_URL + "/" + cardID + "/?idList=" + idList + "&name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)*/
                         xhr.send(data)
                         
                     })
@@ -95,8 +87,6 @@ TrelloPowerUp.initialize({
                     */
 
                     
-
-
                     return null
                 }
             },
