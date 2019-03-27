@@ -50,11 +50,11 @@ TrelloPowerUp.initialize({
                 icon: SEND_TO_SPRINT_ICON,
                 text: "Send To Sprint",
                 callback: function(t) {
-                    /*
+                    
                     var cardPromise = t.card('all').then((card) => {
                         var cardID = card.id 
                     
-                        var newName = "AGORA VAI, PORRA!"
+                        var newName = "AGORA VAI, PORRA! (2)"
                         var data = null
                         var xhr = new XMLHttpRequest()
 
@@ -67,12 +67,12 @@ TrelloPowerUp.initialize({
                             }
                         )
                         
-                        xhr.open("PUT", CARD_EDIT_URL + "/" + cardID + "/?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
+                        xhr.open("POST", CARD_EDIT_URL /*+ "/" + cardID*/ + "/?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                         xhr.send(data)
                         
                     })
-                    */
                     
+                    /*
                     var listPromise = t.card('all').then( (card) => {
 
                         var listID = card.idList
@@ -91,7 +91,7 @@ TrelloPowerUp.initialize({
 
                     }
                     )
-                    
+                    */
 
                     
 
