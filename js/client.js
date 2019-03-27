@@ -19,9 +19,9 @@ function sendToSprint(t) {
 
 
 
-function postBoard(xhrRequest,boardName) {
+function postBoard(xhrRequest,organizationID,boardName) {
 
-    xhrRequest.open("POST", BOARD_EDIT_URL + "/?name=" + boardName + "&key=" + API_KEY + "&token=" + TOKEN)
+    xhrRequest.open("POST", BOARD_EDIT_URL + "/?idOrganization=" + organizationID +"&name=" + boardName + "&key=" + API_KEY + "&token=" + TOKEN)
 
 }
 
@@ -58,7 +58,6 @@ TrelloPowerUp.initialize({
                             }
                         )
                         
-                        postBoard(xhr,newName)
 
                         /* xhr.open("POST", CARD_EDIT_URL + "/" + cardID + "/?idList=" + idList + "&name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)*/
                         xhr.send(data)
@@ -97,5 +96,44 @@ TrelloPowerUp.initialize({
         ]
         
     },
+
+
+    'board-buttons':
+    function(t,options)
+    {
+
+        return [
+            {
+                icon: SEND_TO_SPRINT_ICON,
+                text: "Create Sprint Board",
+                callback: function(t)
+                {
+                    var boardPromise = t.board('all').then( (board) => {
+
+                        var organizationID = board.idOrganization
+                        var data = null
+                        var xhr = new XMLHttpRequest()
+
+                        xhr.addEventListener(
+                            "readystatechange", function() {
+
+                                if (this.readyState === this.DONE) {
+                                    console.log(this.responseText)
+                                }
+                            }
+                        )
+                        
+                        postBoard(xhr,organizationID,"Sprint")
+                        xhr.send(data)
+
+                    }
+                    )
+
+                }
+            }
+        ]
+
+
+    }
 
 })
