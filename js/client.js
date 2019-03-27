@@ -52,7 +52,8 @@ TrelloPowerUp.initialize({
                 callback: function(t) {
                     
                     var cardPromise = t.card('all').then((card) => {
-                        var cardID = card.id 
+                        var cardID = card.id
+                        var idList = card.idList
                     
                         var newName = "AGORA VAI, PORRA! (2)"
                         var data = null
@@ -67,7 +68,7 @@ TrelloPowerUp.initialize({
                             }
                         )
                         
-                        xhr.open("POST", CARD_EDIT_URL /*+ "/" + cardID*/ + "/?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
+                        xhr.open("POST", CARD_EDIT_URL /*+ "/" + cardID*/ + "/?idList=" + idList + "&name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                         xhr.send(data)
                         
                     })
