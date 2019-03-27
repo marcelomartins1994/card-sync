@@ -3,8 +3,8 @@ var Promise = TrelloPowerUp.Promise;
 var SEND_TO_SPRINT_ICON = "./images/send_to_sprint_icon.svg" 
 var CARD_SYNC_ICON = "./images/sync_icon.svg"
 
-const API_KEY = ''
-const TOKEN = ''
+const API_KEY = "719193026361d54cf72ec2b372744cb4"
+const TOKEN = "27a6f844cf95d64099ab9ed5e05dc7dc925d3af22daa8537014fe31be064d44d"
 
 const CARD_EDIT_URL = "https://api.trello.com/1/cards/"
 
@@ -29,17 +29,11 @@ TrelloPowerUp.initialize({
                 text: "Send To Sprint",
                 callback: function(t) {
                     
-                    var cardTest = t.card('all').then((card) => {
-                        var cardID = card.id 
-                        t.set(cardID,'shared', { name: 'SERÁ?' }).then((res) => {
-                            console.log(t.get(cardID, 'shared', 'name'))
-                        }).catch(e => console.log(e, 'err'))
+                    var cardID = t.card('all').then((card) => {
+                        card.id 
                     })
                     
-                    //t.set(cardID,'shared','name','SERÁ?')
-
-                    // console.log(cardID, JSON.stringify(cardID), teste)
-                    /*
+                    var newName = "AGORA VAI, PORRA!"
                     var data = null
                     var xhr = new XMLHttpRequest()
 
@@ -54,8 +48,8 @@ TrelloPowerUp.initialize({
                     
                     xhr.open("PUT", CARD_EDIT_URL + cardID + "?name=" + newName + "&key=" + API_KEY + "&token=" + TOKEN)
                     xhr.send(data)
-                    */
-                    return t.set('card','shared','name', 'TESTE')
+                    
+                    return null
                 }
             },
             {
