@@ -144,7 +144,7 @@ TrelloPowerUp.initialize({
                                         }
                                     }
                                     )
-                                    xhr2.open("GET", BOARD_EDIT_URL + "/" + sprintID + "/lists?")
+                                    xhr2.open("GET", BOARD_EDIT_URL + "/" + sprintID + "/lists?" + "&key=" + API_KEY + "&token=" + TOKEN)
                                     xhr2.send(data2)
 
                                 }
