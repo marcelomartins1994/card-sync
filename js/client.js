@@ -84,7 +84,7 @@ TrelloPowerUp.initialize({
                                             console.log(twinCardID)
 
                                             var findURL = this.responseText.search('"url":')
-                                            var almostURL = this.responseText.substr(findURL + 5, almostThere2.length - 1)
+                                            var almostURL = this.responseText.substr(findURL + 5, this.responseText.length - 1)
                                             var twinCardURL = almostURL.split(",")[0].split('"')[1]
                                             console.log(twinCardURL)
 
