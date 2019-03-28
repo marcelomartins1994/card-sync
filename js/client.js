@@ -131,9 +131,9 @@ TrelloPowerUp.initialize({
                         )
                         postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
                         xhr.send(data)
+                        
+                        console.log(xhr.id)
 
-                        var sprintID = data.id 
-                        console.log(sprintID)
                         /*
                         var orgPromise = t.organization('all').then( (org) => {
 
