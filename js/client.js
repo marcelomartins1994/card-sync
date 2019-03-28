@@ -71,7 +71,7 @@ TrelloPowerUp.initialize({
                             var firstListID = t.get('board','shared','firstListSprint').then( (sprintListID) => {
 
                                 var cardID = card.id
-
+                                var cardURL = card.url
                                 var data = null
                                 var xhr = new XMLHttpRequest()
                                 xhr.addEventListener(
@@ -89,6 +89,25 @@ TrelloPowerUp.initialize({
                                             console.log(twinCardURL)
 
                                             t.attach({url: twinCardURL})
+                                            t.set('card','shared','siblingID',twinCardID)
+                                            t.set(twinCardID,'shared','siblingID',cardID)
+
+
+                                            var data2 = null
+                                            var xhr2 = new XMLHttpRequest()
+                                            xhr2.addEventListener(
+                                                "readystatechange", function() {
+
+                                                    if (this.readyState === this.DONE) {
+                                                        console.log(this.responseText)
+                                                    }
+                                                }
+                                            )
+
+
+                                            xhr2.open("POST", CARD_EDIT_URL + "/" + twinCardID + "/attachments/?url=" + cardURL + "&key=" + API_KEY + "&token=" + TOKEN)
+                                            xhr2.send(data2)
+
 
                                         }
 
