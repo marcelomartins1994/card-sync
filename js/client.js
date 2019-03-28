@@ -31,6 +31,15 @@ function postBoard(xhrRequest,organizationID,boardName) {
 
 }
 
+
+function copyBoard(xhrRequest,orgID,board2Copy,boardName) {
+
+    xhrRequest.open("POST", BOARD_EDIT_URL + "/?idOrganization=" + orgID +"&name=" + boardName + "&idBoardSource=" + board2Copy + "&key=" + API_KEY + "&token=" + TOKEN)
+
+}
+
+
+
 function copyCardToBoard(xhrRequest,card,boardID) {
 
     var newCard = card
@@ -59,6 +68,7 @@ TrelloPowerUp.initialize({
                     var sprintPromise = t.get('board','shared','sprintID').then( (sprintID) => {
                         var cardPromise = t.card('all').then( (card) => {
                             
+                            var firstListID = t.get(sprintID,'shared')
                             var name = card.name
                             var data = null
                             var xhr = new XMLHttpRequest()
@@ -107,6 +117,7 @@ TrelloPowerUp.initialize({
                     var boardPromise = t.board('all').then( (board) => {
 
                         var organizationID = board.idOrganization
+                        var boardID = board.id
                         var data = null
                         var xhr = new XMLHttpRequest()
 
@@ -118,10 +129,63 @@ TrelloPowerUp.initialize({
                                 }
                             }
                         )
-                        t.set('board', 'shared', 'sprintID', organizationID)
-                        postBoard(xhr,organizationID,"Sprint")
+                        postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
                         xhr.send(data)
+                        console.log(data)
+                        /*
+                        var orgPromise = t.organization('all').then( (org) => {
 
+                            var boardsIDs = org.idBoards
+
+                            for (i=0 ; i < boardsIDs.length; i++) {
+
+                                var newBoardPromise = t.get(boardsIDs[i],'shared','name').then( (name) => {
+
+                                    if (name.localeCompare("Sprint") == 0) {
+
+                                        var sprintID = boardsIDs[i]
+                                        break
+
+                                    }
+
+                                })
+
+                            }
+
+                            var data = null
+                            var xhr = new XMLHttpRequest()
+
+                            xhr.addEventListener(
+                                "readystatechange", function() {
+                                    if (this.readyState == this.DONE) {
+                                        console.log(this.responseText)
+                                    }
+                                }
+                            )  
+
+                            var sprintLists = xhr.open("GET", BOARD_EDIT_URL + "/" + sprintID)
+
+                        }
+                        )
+
+
+                        var data = null
+                        var xhr = new XMLHttpRequest()
+
+                        xhr.addEventListener(
+                            "readystatechange", function() {
+
+                                if (this.readyState === this.DONE) {
+                                    console.log(this.responseText)
+                                }
+                            }
+                        )
+                        
+                        var sprintLists = xhr.open("GET", BOARD_EDIT_URL + "/" + sprintID)
+
+                        t.set('board', 'shared', {sprintID: sprintID, sprintFirstList: "*"})
+                        xhr.send(data)
+                        */
                     }
                     )
 
