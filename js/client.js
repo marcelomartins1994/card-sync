@@ -130,6 +130,7 @@ TrelloPowerUp.initialize({
                             }
                         )
                         postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
+                        console.log(typeof(xhr.response))
                         xhr.send(data)
                         
                         console.log(xhr.responseType)
