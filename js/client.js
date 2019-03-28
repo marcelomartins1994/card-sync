@@ -131,7 +131,7 @@ TrelloPowerUp.initialize({
                         )
                         postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
                         
-                        var idcomponents = xhr.response.split(",")[0].split('"')
+                        var idcomponents = xhr.response.split(",")//[0].split('"')
                         console.log(idcomponents)
                         var sprintID = idcomponents[idcomponents.length - 1]
 
