@@ -88,7 +88,7 @@ TrelloPowerUp.initialize({
                                             var twinCardURL = almostURL[almostURL.length - 2]
                                             console.log(twinCardURL)
 
-                                            // t.attach({url: twinCardURL})
+                                            t.attach({url: twinCardURL})
 
                                         }
 
