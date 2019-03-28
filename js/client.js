@@ -128,16 +128,30 @@ TrelloPowerUp.initialize({
                                     console.log(this.responseText)
                                     var almostThere = this.responseText.split(",")[0].split('"')
                                     var sprintID = almostThere[almostThere.length - 2]
-                                    console.log(sprintID)
+                                    
+                                    t.set('board','shared','sprintID',sprintID)
+
                                 }
                             }
                         )
                         postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
-                        
-
-                        //console.log(sprintID)
                         xhr.send(data)
+
+                        var data2 = null
+                        var xhr2 = new XMLHttpRequest()
                         
+                        xhr2.addEventListener(
+                            "readystatechange", function() {
+                                
+                                if (this.readyState === this.DONE) {
+                                    console.log(this.responseText)
+
+                            }
+                        }
+                        )
+                        xhr2.open("GET", BOARD_EDIT_URL + "/" + sprintID + "/lists?")
+                        xhr2.send(data2)
+
                         /*
                         var orgPromise = t.organization('all').then( (org) => {
 
