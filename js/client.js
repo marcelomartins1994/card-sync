@@ -131,26 +131,28 @@ TrelloPowerUp.initialize({
                                     
                                     t.set('board','shared','sprintID',sprintID)
 
+
+                                    var data2 = null
+                                    var xhr2 = new XMLHttpRequest()
+                                    
+                                    xhr2.addEventListener(
+                                        "readystatechange", function() {
+                                            
+                                            if (this.readyState === this.DONE) {
+                                                console.log(this.responseText)
+
+                                        }
+                                    }
+                                    )
+                                    xhr2.open("GET", BOARD_EDIT_URL + "/" + sprintID + "/lists?")
+                                    xhr2.send(data2)
+
                                 }
                             }
                         )
                         postBoard(xhr,organizationID,"Sprint") // Creates Sprint Board
                         xhr.send(data)
 
-                        var data2 = null
-                        var xhr2 = new XMLHttpRequest()
-                        
-                        xhr2.addEventListener(
-                            "readystatechange", function() {
-                                
-                                if (this.readyState === this.DONE) {
-                                    console.log(this.responseText)
-
-                            }
-                        }
-                        )
-                        xhr2.open("GET", BOARD_EDIT_URL + "/" + sprintID + "/lists?")
-                        xhr2.send(data2)
 
                         /*
                         var orgPromise = t.organization('all').then( (org) => {
