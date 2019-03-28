@@ -133,7 +133,7 @@ TrelloPowerUp.initialize({
                         xhr.send(data)
                         
                         console.log(xhr.responseType)
-
+                            //
                         /*
                         var orgPromise = t.organization('all').then( (org) => {
 
