@@ -118,25 +118,7 @@ TrelloPowerUp.initialize({
                                 xhr.send(data)
                             }
                             )
-                            /*
-                            var name = card.name
-                            var data = null
-                            var xhr = new XMLHttpRequest()
-                            xhr.addEventListener(
-                                "readystatechange", function() {
-    
-                                    if (this.readyState === this.DONE) {
-                                        console.log(this.responseText)
-                                    }
-                                }
-                            )
-                            xhr.open("POST", CARD_EDIT_URL + "/?idBoard=" + sprintID + "&name=" + name + "&key=" + API_KEY + "&token=" + TOKEN)
-                            xhr.send(data)
-                            /*var cardURL = card.url
-                            t.attach({
-                                url: cardURL
-                            })*/
-
+                            
                         }
                         )
                     }
@@ -147,7 +129,62 @@ TrelloPowerUp.initialize({
             },
             {
                 icon: CARD_SYNC_ICON,
-                text: "Sync with Sibling"
+                text: "Sync with Sibling",
+                callback: function(t,options) {
+
+                    var cardPromise = t.board('all').then ( (card) => {
+
+                        var cardID = card.id
+                        
+                        var twinCardPromise = t.get('card','shared','siblingID').then( (twinCardID) => {
+
+                            var data = null
+                            var xhr = new XMLHttpRequest()
+                            xhr.addEventListener(
+                                "readystatechange", function() {
+
+                                    if (this.readyState === this.DONE) {
+                                        var almostThere = this.responseText.split(",")[0].split('"')
+                                        var listID = almostThere[almostThere.length - 2]
+
+                                        
+                                        var data2 = null
+                                        var xhr2 = new XMLHttpRequest()
+
+                                        xhr2.addEventListener(
+                                            "readystatechange", function(){
+                                                if (this.readyState === this.DONE) {
+                                                    console.log(this.responseText)
+                                                }
+                                            }
+                                        )
+
+                                        xhr2.open("POST", CARD_EDIT_URL + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                        xhr2.send(data2)
+
+                                    }
+
+                                }
+                            )
+                            xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID + "/list?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                            xhr.send(data)
+
+                        }
+                        )
+
+                        var cardPromise = t.card('all').then ( (card) => {
+
+                            var cardID = card.id
+
+
+                        }
+                        )
+
+
+                    }
+                    )
+
+                }
             }
         ]
         
@@ -180,6 +217,7 @@ TrelloPowerUp.initialize({
                                     var sprintID = almostThere[almostThere.length - 2]
                                     
                                     t.set('board','shared','sprintID',sprintID)
+                                    t.set(sprintID,'shared','backlogID',boardID)
 
 
                                     var data2 = null
