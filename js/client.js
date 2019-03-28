@@ -84,7 +84,7 @@ TrelloPowerUp.initialize({
                                             console.log(twinCardID)
 
                                             var almostThere2 = this.responseText.split(",")
-                                            var almostURL = almostThere2[almostThere2.length -2].split('"')
+                                            var almostURL = almostThere2[almostThere2.length -3].split('"')
                                             var twinCardURL = almostURL[almostURL.length - 2]
                                             console.log(twinCardURL)
 
