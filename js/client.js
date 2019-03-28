@@ -140,6 +140,9 @@ TrelloPowerUp.initialize({
                                             
                                             if (this.readyState === this.DONE) {
                                                 console.log(this.responseText)
+                                                var almostThere2 = this.responseText.split(",")[0].split('"')
+                                                console.log(almostThere2)
+                                                var firstListID = almostThere2[almostThere2.length - 2]
 
                                         }
                                     }
