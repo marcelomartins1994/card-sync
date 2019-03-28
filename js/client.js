@@ -126,7 +126,7 @@ TrelloPowerUp.initialize({
 
                                 if (this.readyState === this.DONE) {
                                     console.log(this.responseText)
-                                    var almostThere = this.responseText.split(",")[0]//.split('"')
+                                    var almostThere = this.responseText.split(",")[0].split('"')
                                     console.log(almostThere)
                                 }
                             }
