@@ -135,6 +135,8 @@ TrelloPowerUp.initialize({
                     var cardPromise = t.board('all').then ( (card) => {
 
                         var cardID = card.id
+                        var cardURL = card.url
+                        /*
                         var name = card.name
                         var desc = card.desc
                         var idMembers = card.idMembers.toString()
@@ -142,7 +144,7 @@ TrelloPowerUp.initialize({
                         var idLabels = card.idLabels.toString()
                         var pos = "top"
                         var due = card.due
-                        var dueComplete = card.dueComplete
+                        var dueComplete = card.dueComplete*/
 
 
 
@@ -152,15 +154,15 @@ TrelloPowerUp.initialize({
                             var xhr = new XMLHttpRequest()
                             xhr.addEventListener(
                                 "readystatechange", function() {
-                                    
+                                    /*
                                     if (this.readyState === this.DONE) {
                                         console.log(this.responseText)
 
                                     }
-
+                                    */
                                     
                                     
-                                    /*
+                                    
                                      if (this.readyState === this.DONE) {
                                         var almostThere = this.responseText.split(",")[0].split('"')
                                         var listID = almostThere[almostThere.length - 2]
@@ -172,40 +174,61 @@ TrelloPowerUp.initialize({
                                         xhr2.addEventListener(
                                             "readystatechange", function(){
                                                 if (this.readyState === this.DONE) {
-                                                    var positionInList = this.responseText
-                                                    console.log(this.responseText)
-
+                                                    
                                                     var data3 = null
                                                     var xhr3 = new XMLHttpRequest()
-
                                                     xhr3.addEventListener(
-
                                                         "readystatechange", function() {
-
                                                             if (this.readyState === this.DONE) {
-                                                                var listID = this.responseText
-                                                                console.log(positionInList)
+                                                                var almostThere = this.responseText.split(",")[0].split('"')
+                                                                var newCardID = almostThere[almostThere.length - 2]
+                                                                console.log(newCardID)
+
+                                                                var findURL = this.responseText.search('"url":')
+                                                                var almostURL = this.responseText.substr(findURL + 5, this.responseText.length - 1)
+                                                                var newTwinCardURL = almostURL.split(",")[0].split('"')[1]
+                                                                console.log(newTwinCardURL)
+                                                                
+                                                                t.attach({url: newTwinCardURL})
+                                                                t.set('card','shared','siblingID',newTwinCardID)
+                                                                t.set(newTwinCardID,'shared','siblingID',cardID)
+                                                                
+                                                                var data4 = null
+                                                                var xhr4 = new XMLHttpRequest()
+                                                                xhr4.addEventListener(
+                                                                    "readystatechange", function() {
+
+                                                                        if (this.readyState === this.DONE) {
+                                                                            console.log(this.responseText)
+                                                                        }
+                                                                    }
+                                                                )
+
+
+                                                                xhr4.open("POST", CARD_EDIT_URL + "/" + newTwinCardID + "/attachments/?url=" + cardURL + "&key=" + API_KEY + "&token=" + TOKEN)
+                                                                xhr4.send(data4)
+
+
                                                             }
+
                                                         }
                                                     )
 
-                                                    xhr3.open("GET",CARD_EDIT_URL + "/" + twinCardID + "/idList?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                                    xhr3.open("POST", CARD_EDIT_URL + "/?idList=" + listID + "&idCardSource=" + cardID + "&key=" + API_KEY + "&token=" + TOKEN)
                                                     xhr3.send(data3)
-
-
                                                 }
                                             }
                                         )
 
-                                        xhr2.open("GET", CARD_EDIT_URL + "/" + twinCardID + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                        xhr2.open("DELETE", CARD_EDIT_URL + "/" + twinCardID + "/" + "?key=" + API_KEY + "&token=" + TOKEN)
                                         xhr2.send(data2)
 
                                     }
-                                    */
+                                    
                                 }
                                 )
-                                xhr.open("PUT", CARD_EDIT_URL + "/" + twinCardID + "/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers +
-                                "&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete 
+                                xhr.open("PUT", CARD_EDIT_URL + "/" + twinCardID +  "/list?" /*"/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers + */
+                                /*"&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete */
                                  + "&key=" + API_KEY + "&token=" + TOKEN)
                                 xhr.send(data)
 
