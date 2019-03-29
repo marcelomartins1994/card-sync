@@ -215,7 +215,7 @@ TrelloPowerUp.initialize({
                                                         }
                                                     )
 
-                                                    xhr3.open("POST", CARD_EDIT_URL + "?idList=" + listID + "&idCardSource=" + cardID + "&key=" + API_KEY + "&token=" + TOKEN)
+                                                    xhr3.open("POST", CARD_EDIT_URL + "/?idList=" + listID + "&idCardSource=" + cardID + "&key=" + API_KEY + "&token=" + TOKEN)
                                                     xhr3.send(data3)
                                                 }
                                             }
