@@ -181,6 +181,7 @@ TrelloPowerUp.initialize({
                                                         "readystatechange", function() {
                                                             if (this.readyState === this.DONE) {
                                                                 var almostThere = this.responseText.split(",")[0].split('"')
+                                                                console.log(this.responseText)
                                                                 var newTwinCardID = almostThere[almostThere.length - 2]
                                                                 console.log(newTwinCardID)
 
@@ -227,10 +228,10 @@ TrelloPowerUp.initialize({
                                     
                                 }
                                 )
-                                xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID +  "/list?" /*"/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers + */
-                                /*"&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete */
-                                 + "&key=" + API_KEY + "&token=" + TOKEN)
-                                xhr.send(data)
+                            xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID +  "/list?" /*"/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers + */
+                            /*"&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete */
+                             + "&key=" + API_KEY + "&token=" + TOKEN)
+                            xhr.send(data)
 
                         }
                         )
