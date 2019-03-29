@@ -227,7 +227,7 @@ TrelloPowerUp.initialize({
                                     
                                 }
                                 )
-                                xhr.open("PUT", CARD_EDIT_URL + "/" + twinCardID +  "/list?" /*"/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers + */
+                                xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID +  "/list?" /*"/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers + */
                                 /*"&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete */
                                  + "&key=" + API_KEY + "&token=" + TOKEN)
                                 xhr.send(data)
