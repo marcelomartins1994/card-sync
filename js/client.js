@@ -181,8 +181,8 @@ TrelloPowerUp.initialize({
                                                         "readystatechange", function() {
                                                             if (this.readyState === this.DONE) {
                                                                 var almostThere = this.responseText.split(",")[0].split('"')
-                                                                var newCardID = almostThere[almostThere.length - 2]
-                                                                console.log(newCardID)
+                                                                var newTwinCardID = almostThere[almostThere.length - 2]
+                                                                console.log(newTwinCardID)
 
                                                                 var findURL = this.responseText.search('"url":')
                                                                 var almostURL = this.responseText.substr(findURL + 5, this.responseText.length - 1)
