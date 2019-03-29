@@ -171,7 +171,7 @@ TrelloPowerUp.initialize({
                                                         }
                                                     )
 
-                                                    xhr3.open("GET",CARD_EDIT_URL + "/idList?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                                    xhr3.open("GET",CARD_EDIT_URL + "/" + twinCardID + "/idList?" + "&key=" + API_KEY + "&token=" + TOKEN)
                                                     xhr3.send(data3)
 
 
@@ -179,7 +179,7 @@ TrelloPowerUp.initialize({
                                             }
                                         )
 
-                                        xhr2.open("GET", CARD_EDIT_URL + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                        xhr2.open("GET", CARD_EDIT_URL + "/" + twinCardID + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
                                         xhr2.send(data2)
 
                                     }
