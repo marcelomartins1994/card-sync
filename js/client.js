@@ -146,7 +146,7 @@ TrelloPowerUp.initialize({
                                     if (this.readyState === this.DONE) {
                                         var almostThere = this.responseText.split(",")[0].split('"')
                                         var listID = almostThere[almostThere.length - 2]
-
+                                        console.log(listID)
                                         
                                         var data2 = null
                                         var xhr2 = new XMLHttpRequest()
@@ -166,7 +166,7 @@ TrelloPowerUp.initialize({
 
                                                             if (this.readyState === this.DONE) {
                                                                 var listID = this.responseText
-                                                                console.log(positionInList,listID)
+                                                                console.log(positionInList)
                                                             }
                                                         }
                                                     )
