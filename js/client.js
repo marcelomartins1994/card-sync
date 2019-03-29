@@ -135,15 +135,33 @@ TrelloPowerUp.initialize({
                     var cardPromise = t.board('all').then ( (card) => {
 
                         var cardID = card.id
-                        
+                        var name = card.name
+                        var desc = card.desc
+                        var idMembers = card.idMembers.toString()
+                        var idAttachmentCover = card.idAttachmentCover
+                        var idLabels = card.idLabels.toString()
+                        var pos = "top"
+                        var due = card.due
+                        var dueComplete = card.dueComplete
+
+
+
                         var twinCardPromise = t.get('card','shared','siblingID').then( (twinCardID) => {
                             console.log(twinCardID)
                             var data = null
                             var xhr = new XMLHttpRequest()
                             xhr.addEventListener(
                                 "readystatechange", function() {
-
+                                    
                                     if (this.readyState === this.DONE) {
+                                        console.log(this.responseText)
+
+                                    }
+
+                                    
+                                    
+                                    /*
+                                     if (this.readyState === this.DONE) {
                                         var almostThere = this.responseText.split(",")[0].split('"')
                                         var listID = almostThere[almostThere.length - 2]
                                         console.log(listID)
@@ -183,11 +201,13 @@ TrelloPowerUp.initialize({
                                         xhr2.send(data2)
 
                                     }
-
+                                    */
                                 }
-                            )
-                            xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID + "/list?" + "&key=" + API_KEY + "&token=" + TOKEN)
-                            xhr.send(data)
+                                )
+                                xhr.open("GET", CARD_EDIT_URL + "/" + twinCardID + "/?name=" + name + "&desc=" + desc + "&idMembers=" + idMembers +
+                                "&idLabels=" + idLabels + "&due=" + due + "&dueComplete=" + dueComplete 
+                                 + "&key=" + API_KEY + "&token=" + TOKEN)
+                                xhr.send(data)
 
                         }
                         )
