@@ -154,12 +154,32 @@ TrelloPowerUp.initialize({
                                         xhr2.addEventListener(
                                             "readystatechange", function(){
                                                 if (this.readyState === this.DONE) {
+                                                    var positionInList = this.responseText
                                                     console.log(this.responseText)
+
+                                                    var data3 = null
+                                                    var xhr3 = new XMLHttpRequest()
+
+                                                    xhr3.addEventListener(
+
+                                                        "readystatechange", function() {
+
+                                                            if (this.readyState === this.DONE) {
+                                                                var listID = this.responseText
+                                                                console.log(positionInList,listID)
+                                                            }
+                                                        }
+                                                    )
+
+                                                    xhr3.open("GET",CARD_EDIT_URL + "/idList?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                                    xhr3.send(data3)
+
+
                                                 }
                                             }
                                         )
 
-                                        xhr2.open("POST", CARD_EDIT_URL + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
+                                        xhr2.open("GET", CARD_EDIT_URL + "/pos?" + "&key=" + API_KEY + "&token=" + TOKEN)
                                         xhr2.send(data2)
 
                                     }
@@ -172,13 +192,7 @@ TrelloPowerUp.initialize({
                         }
                         )
 
-                        var cardPromise = t.card('all').then ( (card) => {
-
-                            var cardID = card.id
-
-
-                        }
-                        )
+                       
 
 
                     }
