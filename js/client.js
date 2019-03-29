@@ -137,7 +137,7 @@ TrelloPowerUp.initialize({
                         var cardID = card.id
                         
                         var twinCardPromise = t.get('card','shared','siblingID').then( (twinCardID) => {
-
+                            console.log(twinCardID)
                             var data = null
                             var xhr = new XMLHttpRequest()
                             xhr.addEventListener(
